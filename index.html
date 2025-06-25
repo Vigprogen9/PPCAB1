@@ -10,9 +10,9 @@
   <link rel="icon" type="image/png" sizes="192x192" href="Logo.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="Logo.png" />
   <link rel="shortcut icon" href="Logo.png" />
+  <meta name="theme-color" content="#facc15" />
 
   <style>
-    /* --- Layout Umum --- */
     body {
       margin: 0;
       padding: 0;
@@ -27,6 +27,7 @@
       font-weight: bold;
       padding: 10px;
       text-align: center;
+      font-size: 16px;
     }
 
     #footer {
@@ -36,7 +37,6 @@
       font-size: 14px;
     }
 
-    /* --- Form Container --- */
     #form-container {
       width: 90%;
       max-width: 800px;
@@ -69,6 +69,7 @@
       border: 1px solid #ccc;
       border-radius: 8px;
       transition: all 0.3s ease-in-out;
+      font-size: 16px;
     }
 
     input[type="text"]:focus,
@@ -102,7 +103,6 @@
       cursor: wait;
     }
 
-    /* --- Modal (Sukses) --- */
     .modal {
       display: none;
       position: fixed;
@@ -163,7 +163,6 @@
       background-color: #128C7E;
     }
 
-    /* --- Loading Spinner --- */
     #loadingSpinner {
       display: none;
       position: fixed;
@@ -188,7 +187,6 @@
       animation: spin 1s linear infinite, popIn 0.3s ease-out;
     }
 
-    /* --- Animasi --- */
     @keyframes spin {
       0% {
         transform: rotate(0deg);
@@ -223,22 +221,54 @@
 
     @media (max-width: 600px) {
       #form-container {
-        margin: 20px;
+        width: 95%;
+        margin: 30px auto;
         padding: 20px;
+      }
+
+      input[type="text"],
+      input[type="date"],
+      select,
+      textarea {
+        font-size: 16px;
+        padding: 12px;
+      }
+
+      input[type="submit"] {
+        font-size: 18px;
+        padding: 14px;
+      }
+
+      textarea {
+        resize: vertical;
+      }
+
+      #running-text {
+        font-size: 14px;
+        padding: 8px;
+      }
+
+      .modal-content {
+        width: 95%;
+        margin-top: 40%;
+      }
+
+      #joinWhatsApp {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
       }
     }
   </style>
 </head>
 
 <body>
-  <!-- Running Text -->
   <div id="running-text">
     <marquee behavior="scroll" direction="left">
       Selamat Datang di Form Pendaftaran Vigara Production! Pastikan data yang kamu isi benar ya!, Serta jangan lupa Gabung Ke Groupnya!
     </marquee>
   </div>
 
-  <!-- Form Pendaftaran -->
   <div id="form-container">
     <h2>Form Pendaftaran</h2>
     <form id="myForm">
@@ -267,12 +297,12 @@
         <option value="Scriptwriter">Scriptwriter</option>
         <option value="Editor">Editor</option>
         <option value="Design Visual">Design Visual</option>
-         <option value="Design Visual">TIDAK MEMILIH</option>
+        <option value="TIDAK MEMILIH">TIDAK MEMILIH</option>
       </select>
 
       <label for="divisi_2">Pilih Divisi 2:</label>
       <select id="divisi_2" name="divisi2" required>
-        <option value="">-- Pilih Divisi --</option> 
+        <option value="">-- Pilih Divisi --</option>
       </select>
 
       <label for="alasan1">Alasan Memilih Divisi 1:</label>
@@ -285,7 +315,6 @@
     </form>
   </div>
 
-  <!-- Modal Sukses -->
   <div id="successModal" class="modal">
     <div class="modal-content">
       <div class="checkmark"></div>
@@ -295,17 +324,14 @@
     </div>
   </div>
 
-  <!-- Spinner -->
   <div id="loadingSpinner">
     <div class="spinner"></div>
   </div>
 
-  <!-- Footer -->
   <div id="footer">
     &copy; 2025 Vigara Production. All rights reserved.
   </div>
 
-  <!-- Script -->
   <script>
     const form = document.getElementById('myForm');
     const modal = document.getElementById('successModal');
